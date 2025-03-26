@@ -1,0 +1,25 @@
+i. Update the column total by adding the columns mark1, mark2, mark3. 
+UPDATE STUDENT SET total = mark1 + mark2 + mark3; 
+
+ii. Find the GPA score of all the students. 
+UPDATE STUDENT SET GPA = total / 300 * 100; 
+
+iii. Find the students who born on a particular year of birth from the date_of_birth column. 
+SELECT * FROM STUDENT WHERE strftime('%Y', date_of_birth) = '1998'; (OR)
+SELECT date_of_birth from STUDENT where substr(student.dob,-2)=’99’;
+
+iv. List the students who are studying in a particular branch of study. 
+SELECT * FROM STUDENT WHERE branch = 'MCA'; 
+
+v. Find the maximum GPA score of the student branch-wise. 
+SELECT s.USN, s.branch, s.GPA FROM STUDENT s WHERE (s.branch, s.GPA) IN (
+SELECT branch, MAX(GPA) AS max_gpa FROM STUDENT  GROUP BY branch );
+
+vi. Find the students whose name starts with the alphabet “S”. 
+SELECT * FROM STUDENT WHERE name LIKE 'S%'; 
+
+vii. Find the students whose name ends with the alphabets “AR”. 
+SELECT * FROM STUDENT WHERE name LIKE '%AR'; 
+
+viii. Delete the student details whose USN is given as 1001. 
+DELETE FROM STUDENT WHERE USN = '1001';
